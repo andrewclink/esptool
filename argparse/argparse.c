@@ -1,4 +1,5 @@
 #include "infohelper.h"
+#include "argparse.h"
 
 int parse_arg(int num_args, char **arg_ptr)
 {

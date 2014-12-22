@@ -27,6 +27,7 @@
 
 #include <inttypes.h>
 #include <stdio.h>
+#include "esptool_elf.h"
 
 /*
 ** structs used to hold a local ELF cache object of the informations

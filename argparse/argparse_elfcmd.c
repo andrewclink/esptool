@@ -1,3 +1,6 @@
+#include "argparse_elfcmd.h"
+#include "esptool_elf_object.h"
+
 int argparse_elfcmd(int num_args, char **arg_ptr)
 {
     char *cur_cmd;
@@ -25,7 +28,7 @@ int argparse_elfcmd(int num_args, char **arg_ptr)
                 {
                     return 0;
                 }
-                if(save_elf_section_bindata(arg_ptr[0], arg_ptr[1]))
+                if(save_elf_section_bindata((unsigned char*)arg_ptr[0], (unsigned char *)arg_ptr[1]))
                 {
                     return 3;
                 }

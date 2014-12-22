@@ -29,6 +29,8 @@
 
 #include "infohelper.h"
 #include "argparse.h"
+#include "esptool_elf_object.h"
+#include "esptool_binimage.h"
 
 int main(int argc, char **argv)
 {
