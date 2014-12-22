@@ -73,5 +73,5 @@ int main(int argc, char **argv)
 EXITERROR:
     close_elf_object();
     binimage_write_close(16);
-    exit -1;
+    exit(EXIT_FAILURE);
 }

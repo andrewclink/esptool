@@ -213,7 +213,7 @@ int get_elf_secnum_by_name(unsigned char *secname)
     
     for(cnt = 1; cnt < e_object.header.e_shnum; cnt++)
     {
-        if( strcmp(e_object.sections[cnt-1].name, secname) == 0)
+        if( strcmp((char*)e_object.sections[cnt-1].name, (char*)secname) == 0)
         {
             iprintf(2, "found section %s at index %i\r\n", secname, cnt);
             return cnt;
@@ -287,7 +287,7 @@ int save_elf_section_bindata( unsigned char *secname, unsigned char *fname )
     
     if(binblob)
     {
-        f = fopen( fname, "wb" );
+        f = fopen((char*)fname, "wb" );
         if(f == NULL)
         {
             iprintf(-1, "can't open file \"%s\" to save binary dump of ELF section \"%s\"\r\n", fname, e_object.sections[secnum-1].name);
@@ -343,7 +343,7 @@ Elf32_Word get_elf_entry(void)
     return e_object.header.e_entry;
 }
 
-int create_elf_object(unsigned char *filename)
+int create_elf_object(const char *filename)
 {
     if(e_object.e_file)
     {

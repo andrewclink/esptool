@@ -68,7 +68,7 @@ int argparse_binimagecmd(int num_args, char **arg_ptr)
                 {
                     return 0;
                 }
-                if(argparse_binimagecmd_add_segment(arg_ptr[0], 4))
+                if(argparse_binimagecmd_add_segment((unsigned char *)arg_ptr[0], 4))
                 {
                     return 2;
                 }

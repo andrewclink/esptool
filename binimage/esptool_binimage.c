@@ -76,7 +76,7 @@ int binimage_add_segment(uint32_t address, uint32_t size, unsigned char *data)
     }
 }
 
-int binimage_prepare(unsigned char *fname, uint32_t entry)
+int binimage_prepare(const char *fname, uint32_t entry)
 {
     if(b_image.image_file)
     {
@@ -132,7 +132,7 @@ int binimage_write_close(uint32_t padsize)
     if(fwrite((unsigned char*)&b_image, 1, 8, b_image.image_file) != 8)
     {
         iprintf(-1, "cant write main header to binimage file, aborting\r\n");
-        close(b_image.image_file);
+        fclose(b_image.image_file);
         b_image.image_file = 0;
         return 0;
     }
@@ -144,7 +144,7 @@ int binimage_write_close(uint32_t padsize)
         if(fwrite((unsigned char*)&b_image.segments[cnt], 1, 8, b_image.image_file) != 8)
         {
             iprintf(-1, "cant write header for segment  #%i to binimage file, aborting\r\n", cnt);
-            close(b_image.image_file);
+            fclose(b_image.image_file);
             b_image.image_file = 0;
             return 0;
         }
@@ -154,7 +154,7 @@ int binimage_write_close(uint32_t padsize)
         if(fwrite(b_image.segments[cnt].data, 1, b_image.segments[cnt].size, b_image.image_file) != b_image.segments[cnt].size)
         {
             iprintf(-1, "cant write data block for segment  #%i to binimage file, aborting\r\n", cnt);
-            close(b_image.image_file);
+            fclose(b_image.image_file);
             b_image.image_file = 0;
             printf("Note: returning 0 where nothing was previously defined\n");
             return 0;

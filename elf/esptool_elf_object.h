@@ -61,7 +61,7 @@ typedef struct {
 ** creates a local ELF cache object
 ** filename: the name of the ELF file on disk
 */
-int create_elf_object(unsigned char *filename);
+int create_elf_object(const char *filename);
 
 /*
 ** cleanup and release allocated memory for the ELF cahce object
