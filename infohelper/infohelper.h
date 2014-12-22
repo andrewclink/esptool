@@ -30,7 +30,7 @@
 ** info messages with selectable verbosity.
 */
 
-#if 0
+#if 1
 #define printf_4        printf_3
 #define printf_5        printf_3
 #define printf_6        printf_3
@@ -57,9 +57,9 @@
 #define CAT(A, B) CAT2(A, B)
 #define CAT2(A, B) A ## B
 
-// #define iprintf(...)\
-//         CAT(printf_, COUNT_PARMS(__VA_ARGS__))(__VA_ARGS__)
-#define iprintf(level, ...) printf(__VA_ARGS__)
+#define iprintf(...)\
+        CAT(printf_, COUNT_PARMS(__VA_ARGS__))(__VA_ARGS__)
+// #define iprintf(level, ...) printf(__VA_ARGS__)
 
 /*
 ** set verbositiy level
