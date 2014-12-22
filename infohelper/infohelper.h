@@ -30,7 +30,10 @@
 ** info messages with selectable verbosity.
 */
 
-#if 1
+extern int printf_1(int err);
+extern int printf_2(int error, char *string);
+extern int printf_3(int error, char *fmt, ...) __attribute__ ((format (printf, 2, 3)));
+
 #define printf_4        printf_3
 #define printf_5        printf_3
 #define printf_6        printf_3
@@ -38,17 +41,7 @@
 #define printf_8        printf_3
 #define printf_9        printf_3
 #define printf_10       printf_3
-#else
-#define printf_2        printf
-#define printf_3        printf
-#define printf_4        printf
-#define printf_5        printf
-#define printf_6        printf
-#define printf_7        printf
-#define printf_8        printf
-#define printf_9        printf
-#define printf_10       printf
-#endif
+
 
 #define COUNT_PARMS2(_1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _, ...) _
 #define COUNT_PARMS(...)\
@@ -59,6 +52,7 @@
 
 #define iprintf(...)\
         CAT(printf_, COUNT_PARMS(__VA_ARGS__))(__VA_ARGS__)
+
 // #define iprintf(level, ...) printf(__VA_ARGS__)
 
 /*

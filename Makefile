@@ -1,5 +1,5 @@
 TARGET_ARCH	= LINUX 
-CFLAGS		= -Os
+CFLAGS		= -Os -Wno-format-extra-args
 SDK_LIBDIR	=
 SDK_LIBS	=
 SDK_INCLUDES	=
@@ -22,7 +22,8 @@ vpath %.c $(SRC_DIR)
 
 define make-goal
 $1/%.o: %.c
-	$(CC) $(INCLUDES) $(SDK_INCLUDES) $(CFLAGS) -D$(TARGET_ARCH) -c $$< -o $$@
+	@echo "[ Build: $$< ]"
+	@$(CC) $(INCLUDES) $(SDK_INCLUDES) $(CFLAGS) -D$(TARGET_ARCH) -c $$< -o $$@
 endef
 
 .PHONY: all checkdirs clean
